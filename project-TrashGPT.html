@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrashGPT</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <div class="logo">Jakrapat Wongpradu</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+    </div>
+</nav>
+
+<section>
+    <h1>Real Time Object Detection Model for Waste Sorting</h1>
+
+    <h2>Overview</h2>
+    <p>
+        This project presents an intelligent waste sorting system that uses a YOLOv11s object detection model to classify different types of waste in real time. The model is deployed on a Jetson Orin Nano, enabling edge-based processing for fast and efficient detection without relying on cloud services.
+
+Based on the detected object, the system controls mechanical lids using servo motors to automatically sort waste into the appropriate categories. This integration of computer vision and embedded hardware demonstrates a practical approach to automating waste management and improving sorting efficiency.
+    </p>
+
+    <h2>Tech Stack</h2>
+    <p>Python, YOLO, Jetson Orin Nano OBC, Google Colab</p>
+
+    <h2>How It Works</h2>
+    <p>
+        The camera detects objects in real-time and sends signals to servos
+        to sort waste into appropriate bins.
+    </p>
+
+    <h2>Source Code</h2>
+    <p>
+        Training Code: <a href="https://colab.research.google.com/drive/1IkM1S0j85Q9aqL_PrhzBWVzlKJT7pW-P?usp=sharing">https://colab.research.google.com/drive/1IkM1S0j85Q9aqL_PrhzBWVzlKJT7pW-P?usp=sharing</a>
+    </p>
+
+    <h2>Report</h2>
+    <div class="pdf-container">
+    <iframe src="files/ProjectTrashGPT.pdf" width="100%" height="600px"></iframe>
+    </div>
+    <a class="btn" href="files/ProjectTrashGPT.pdf" download>Download Report</a>
+
+</section>
+
+</body>
+</html>
