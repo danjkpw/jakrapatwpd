@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Based Application</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+    <div class="logo">Jakrapat Wongpradu</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+    </div>
+</nav>
+
+<section>
+    <h1>Lost and Found Cloud Based Application</h1>
+
+    <h2>Overview</h2>
+    <p>
+        An API based cloud application built on AWS for managing and tracking lost items. The application allows users to report lost items, search for found items, and manage their reports through a user-friendly interface.
+    </p>
+    <h2>Features</h2>
+    <p>For Students (Client View)</p>
+    <p>
+        -Report Lost Items: Submit details about lost items including location, time, and category.<br>
+        -Browse Items: View a searchable list of all lost and found items.<br>
+        -Real-time Status: Track the status of items (Lost, Found, Returned).<br>
+        -Secure Authentication: Log in securely using university credentials (via AWS Cognito).<br>
+    </p>
+    <p>For Admins & Staff</p>
+    <p>
+        Admin Dashboard: Visual analytics of lost vs. found items and category breakdowns.<br>
+        Item Management: Verify submitted claims, delete resolved items, and manage the database.<br>
+        Report Found Items: Staff interface to log items found on campus.<br>
+        Verification System: Review proof of ownership (IDs/Photos) uploaded by users before releasing items.<br>
+        Matching: System suggests potential matches between "Lost" reports and "Found" inventory.<br>
+
+    </p>
+
+
+
+    <h2>Architecture</h2>
+    <p>The system utilizes a robust serverless architecture on AWS. This design separates the frontend (Amplify) from the backend logic (Lambda) and storage (DynamoDB/S3), ensuring high scalability and cost-efficiency.</p>
+    <p></p>
+    <p>Cloud Stack:</p>
+    <p>
+        Frontend: React.js (Hosted on AWS Amplify)<br>
+        Authentication: Amazon Cognito<br>
+        API Layer: Amazon API Gateway<br>
+        Business Logic: AWS Lambda (Node.js)<br>
+        Database: Amazon DynamoDB<br>
+        Storage: Amazon S3 (For item images and ID verification)<br>
+    </p>
+
+    <h2>Source Code</h2>
+    <p>Github Source Code: <a href="https://github.com/natthidathe/Campus-Lost-and-Found-System/tree/main">https://github.com/natthidathe/Campus-Lost-and-Found-System/tree/main</a></p>
+    <h2>Report</h2>
+    <div class="pdf-container">
+    <iframe src="files/ProjectAWS.pdf" width="100%" height="600px"></iframe>
+    </div>
+    <a class="btn" href="files/ProjectAWS.pdf" download>Download Report</a>
+
+</section>
+
+</body>
+</html>
