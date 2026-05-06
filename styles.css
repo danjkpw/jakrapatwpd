@@ -28,6 +28,7 @@ nav {
     background-color: #161b22;
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -55,7 +56,7 @@ nav {
     justify-content: center;
     gap: 40px;
     padding: 100px 20px;
-    flex-wrap: wrap; /* responsive */
+    flex-wrap: wrap;
 }
 
 .hero h1 {
@@ -140,6 +141,7 @@ footer {
     background: #161b22;
     color: #8b949e;
 }
+
 .pfp-img {
     width: 300px;
     height: 300px;
@@ -149,6 +151,7 @@ footer {
     border: 3px solid #58a6ff;
     box-shadow: 0 0 25px rgba(88, 166, 255, 0.7);
 }
+
 .intern-img {
     display: block;
     margin: 20px auto;
@@ -159,6 +162,7 @@ footer {
     border: 3px solid #58a6ff;
     box-shadow: 0 0 25px rgba(88, 166, 255, 0.7);
 }
+
 .pdf-container {
     max-width: 1200px;
     margin: 20px auto;
@@ -169,6 +173,7 @@ footer {
     height: 1200px;
     border-radius: 10px;
 }
+
 .video-container {
     max-width: 900px;
     margin: 30px auto;
@@ -179,6 +184,7 @@ footer {
     height: 500px;
     border-radius: 10px;
 }
+
 .social-icons {
     margin-top: 15px;
 }
@@ -190,7 +196,6 @@ footer {
     transition: all 0.3s ease;
 }
 
-/* Hover effect */
 .social-icons a:hover {
     color: #58a6ff;
     transform: translateY(-3px) scale(1.1);
@@ -200,28 +205,158 @@ footer {
         0 0 20px rgba(88, 166, 255, 0.9);
 }
 
-/* ========================= */
-/* 📱 MOBILE RESPONSIVE */
-/* ========================= */
+
+/* HAMBURGER — hidden on desktop */
+.hamburger {
+    display: none;
+}
+
+/* DRAWER — fully hidden on desktop */
+.drawer {
+    display: none;
+}
+
+/* OVERLAY — fully hidden on desktop */
+
+.page-overlay {
+    display: none;
+}
+
+.back-btn-box {
+    display: inline-block;
+    margin: 20px 40px;
+    padding: 8px 16px;
+    border: 1px solid #58a6ff;
+    border-radius: 6px;
+    color: #58a6ff;
+    transition: 0.3s;
+}
+
+.back-btn-box:hover {
+    background: #58a6ff;
+    color: #0d1117;
+    box-shadow: 0 0 15px rgba(88,166,255,0.7);
+}
+
+
+/* MOBILE (≤768px) */
 @media (max-width: 768px) {
 
-    /* Navbar */
     nav {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        text-align: center;
+        padding: 15px 20px;
     }
 
+    /* Hide desktop links */
     .nav-links {
-        margin-top: 10px;
+        display: none;
     }
 
-    .nav-links a {
-        display: inline-block;
-        margin: 10px;
+    /* Show hamburger */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 26px;
+        height: 18px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 400;
+        position: relative;
     }
 
-    /* Hero section */
+    .hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #c9d1d9;
+        border-radius: 2px;
+        transition: background-color 0.3s ease;
+    }
+
+    .hamburger:hover span {
+        background-color: #58a6ff;
+    }
+
+    .drawer {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 260px;
+        height: 100vh;
+        background-color: #161b22;
+        border-left: 1px solid #30363d;
+        padding: 70px 30px 30px;
+        gap: 10px;
+        z-index: 300;
+        box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
+        /* Start fully off-screen to the right */
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Prevent any overflow peek */
+        visibility: hidden;
+    }
+
+    .drawer.open {
+        transform: translateX(0);
+        visibility: visible;
+    }
+
+    .drawer a {
+        color: #c9d1d9;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 12px 0;
+        border-bottom: 1px solid #21262d;
+        transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+
+    .drawer a:hover {
+        color: #58a6ff;
+        padding-left: 6px;
+    }
+
+    .drawer-close {
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: #8b949e;
+        font-size: 20px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+    }
+
+    .drawer-close:hover {
+        color: #58a6ff;
+    }
+
+    /* Overlay */
+    .page-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: rgba(13, 17, 23, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.35s ease;
+    }
+
+    .page-overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    /* Hero */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -241,28 +376,23 @@ footer {
         font-size: 16px;
     }
 
-    /* Social icons */
     .social-icons a {
         font-size: 20px;
         margin: 10px;
     }
 
-    /* Sections */
     section {
         padding: 20px;
     }
 
-    /* Cards */
     .card {
         padding: 15px;
     }
 
-    /* PDF */
     .pdf-container iframe {
         height: 400px;
     }
 
-    /* Video */
     .video-container iframe {
         height: 250px;
     }
