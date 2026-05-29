@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internship</title>
+    <title>Experience</title>
     <link rel="stylesheet" href="styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,58 @@
     <h1>Cybersecurity Analyst Intern</h1>
     <p><strong>Cybertron</strong> | June 2025 - Aug 2025</p>
 
-    <img src="files/cybertron.jpg" class="intern-img">
+    <div class="slider-container">
+    <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
+
+
+<img id="slider-image" src="files/cybertron.jpg" class="intern-img">
+
+<button class="slide-btn next" onclick="changeSlide(1)">❯</button>
+
+</div>
+
+<script>
+    const images = [
+        "files/cybertron.jpg",
+        "files/cybertron_2.jpg",
+        "files/cybertron_3.jpg",
+        "files/cybertron_4.jpg",
+        "files/cybertron_5.jpg",
+    ];
+
+    let currentIndex = 0;
+
+    const sliderImage = document.getElementById("slider-image");
+
+    function showImage(index) {
+        sliderImage.style.opacity = 0;
+
+        setTimeout(() => {
+            sliderImage.src = images[index];
+            sliderImage.style.opacity = 1;
+        }, 200);
+    }
+
+    function changeSlide(direction) {
+        currentIndex += direction;
+
+        if (currentIndex >= images.length) {
+            currentIndex = 0;
+        }
+
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1;
+        }
+
+        showImage(currentIndex);
+    }
+
+    // Auto slide every 5 seconds
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
+</script>
+
 
     <h2>Overview</h2>
     <p>
