@@ -21,18 +21,61 @@
     <h1></h1>
     <a href="#" class="back-btn" onclick="history.back()">← Back</a>
     <h1>Sales Associate and Translator | Part-Time</h1>
-    <p><strong>VENUS BISKUVI SAN. VE TIC. A.S </strong> | 27 May 2025 - 31 May 2025</p>
+    <p><strong>VENUS BISKUVI SAN. VE TIC. A.S </strong> | 27 May 2025 - 31 May 2025
 
-    <img src="files/venus2025.jpg" class="intern-img">
+    <div class="slider-container">
+    <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
+
+
+<img id="slider-image" src="files/venus2025.jpg" class="intern-img">
+
+<button class="slide-btn next" onclick="changeSlide(1)">❯</button>
+
+
+</div>
+
+<script>
+    const images = [
+        "files/venus2025.jpg"
+    ];
+
+    let currentIndex = 0;
+
+    const sliderImage = document.getElementById("slider-image");
+
+    function showImage(index) {
+        sliderImage.style.opacity = 0;
+
+        setTimeout(() => {
+            sliderImage.src = images[index];
+            sliderImage.style.opacity = 1;
+        }, 200);
+    }
+
+    function changeSlide(direction) {
+        currentIndex += direction;
+
+        if (currentIndex >= images.length) {
+            currentIndex = 0;
+        }
+
+        if (currentIndex < 0) {
+            currentIndex = images.length - 1;
+        }
+
+        showImage(currentIndex);
+    }
+
+    // Auto slide every 5 seconds
+    setInterval(() => {
+        changeSlide(1);
+    }, 5000);
+</script>
+
 
     <h2>Overview</h2>
     <p>
-        Worked with Venus Biscuit, a Turkish food company, during the 2025 ThaiFEX international trade exhibition for 3 days alongside Mr. Mehmet Sinan Ertek, Regional Sales Manager. Communicated with multiple international clients and distributors from regions including the Middle East, India, Europe, Asia, and America.
-
-Provided detailed product information to potential buyers, including product details, private labeling services, export markets, product certifications, and distributor availability in different countries. Assisted in facilitating business discussions between clients and the regional sales manager by documenting customer interests, exchanging business cards, and recording potential business opportunities for follow-up communication.
-
-Additional responsibilities included distributing product samples, assisting visitors at the exhibition booth, maintaining booth organization, and supporting overall customer engagement throughout the event. Developed strong communication, translation, interpersonal, and international business interaction skills in a multicultural professional environment.
-
+        Worked with Venus Biscuit, a Turkish food company, during the 2025 ThaiFEX international trade exhibition for 3 days alongside Mr. Mehmet Sinan Ertek, Regional Sales Manager. Communicated with multiple international clients and distributors from regions including the Middle East, India, Europe, Asia, and America. Provided detailed product information to potential buyers, including product details, private labeling services, export markets, product certifications, and distributor availability in different countries. Assisted in facilitating business discussions between clients and the regional sales manager by documenting customer interests, exchanging business cards, and recording potential business opportunities for follow-up communication. Additional responsibilities included distributing product samples, assisting visitors at the exhibition booth, maintaining booth organization, and supporting overall customer engagement throughout the event. Developed strong communication, translation, interpersonal, and international business interaction skills in a multicultural professional environment.
     </p>
 
     
