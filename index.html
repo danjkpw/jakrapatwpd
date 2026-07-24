@@ -79,6 +79,127 @@
     </div>
 </div>
 
+<!-- Dan AI Section -->
+<section id="dan-ai" class="ai-section">
+    <div class="ai-container">
+
+        <div class="ai-heading">
+            <div>
+                <span class="ai-label">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    AI PORTFOLIO ASSISTANT
+                </span>
+
+                <h2>Ask Mali AI</h2>
+
+                <p>
+                    Ask about Jakrapat's experience, technical skills,
+                    education, and projects.
+                </p>
+            </div>
+
+            <button id="clearChat" class="clear-chat" type="button">
+                <i class="fa-solid fa-rotate-right"></i>
+                Clear chat
+            </button>
+        </div>
+
+        <!-- Suggested questions -->
+        <div class="suggested-prompts">
+            <button
+                class="prompt-button"
+                type="button"
+                data-question="Tell me about Jakrapat's cybersecurity experience."
+            >
+                <i class="fa-solid fa-shield-halved"></i>
+                Cybersecurity experience
+            </button>
+
+            <button
+                class="prompt-button"
+                type="button"
+                data-question="What projects has Jakrapat worked on?"
+            >
+                <i class="fa-solid fa-code"></i>
+                View his projects
+            </button>
+
+            <button
+                class="prompt-button"
+                type="button"
+                data-question="What technical skills does Jakrapat have?"
+            >
+                <i class="fa-solid fa-laptop-code"></i>
+                Technical skills
+            </button>
+
+            <button
+                class="prompt-button"
+                type="button"
+                data-question="Why should a company hire Jakrapat?"
+            >
+                <i class="fa-solid fa-briefcase"></i>
+                Why hire Dan?
+            </button>
+        </div>
+
+        <!-- Conversation -->
+        <div
+            id="chatMessages"
+            class="chat-messages"
+            aria-live="polite"
+        >
+            <div class="message assistant-message">
+                <div class="message-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+
+                <div class="message-content">
+                    <span class="message-name">Mali AI</span>
+
+                        <p>
+                            Hi! I'm Mali AI. I can answer questions about
+                            Jakrapat's experience, projects, education, and
+                            technical skills. What would you like to know?
+                        </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input -->
+        <form id="chatForm" class="chat-form">
+            <label for="chatInput" class="visually-hidden">
+                Ask Mali AI a question
+            </label>
+
+            <textarea
+                id="chatInput"
+                maxlength="500"
+                rows="1"
+                placeholder="Ask anything about Jakrapat..."
+                autocomplete="off"
+                required
+            ></textarea>
+
+            <button
+                id="chatSend"
+                class="chat-send"
+                type="submit"
+                aria-label="Send message"
+            >
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Send</span>
+            </button>
+        </form>
+
+        <p class="ai-disclaimer">
+            Mali AI uses information from this portfolio and may occasionally
+            make mistakes.
+        </p>
+
+    </div>
+</section>
+
 <section>
     <section id="aboutme">
         <h2>About Me</h2>
@@ -318,6 +439,7 @@
 </body>
 
 <script>
+    //Slide and menu
     const hamburger = document.getElementById('hamburger');
     const drawer = document.getElementById('drawer');
     const overlay = document.getElementById('pageOverlay');
@@ -344,6 +466,182 @@
     drawerLinks.forEach(link => {
         link.addEventListener('click', closeDrawer);
     });
+
+    // ==========================
+// Dan AI Chatbot
+// ==========================
+
+const chatForm = document.getElementById("chatForm");
+const chatInput = document.getElementById("chatInput");
+const chatSend = document.getElementById("chatSend");
+const chatMessages = document.getElementById("chatMessages");
+const clearChatButton = document.getElementById("clearChat");
+const promptButtons = document.querySelectorAll(".prompt-button");
+
+const initialChatMessage = `
+    <div class="message assistant-message">
+        <div class="message-avatar">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+
+        <div class="message-content">
+            <span class="message-name">Mali AI</span>
+
+            <p>
+                Hi! I'm Mali AI. I can answer questions about 
+                Jakrapat's experience, projects, education, and 
+                technical skills. What would you like to know?
+            </p>
+        </div>
+    </div>
+`;
+
+function addMessage(text, type) {
+    const message = document.createElement("div");
+    message.classList.add("message");
+
+    if (type === "user") {
+        message.classList.add("user-message");
+
+        const content = document.createElement("div");
+        content.classList.add("message-content");
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+
+        content.appendChild(paragraph);
+        message.appendChild(content);
+    } else {
+        message.classList.add(
+            type === "error"
+                ? "error-message"
+                : "assistant-message"
+        );
+
+        const avatar = document.createElement("div");
+        avatar.classList.add("message-avatar");
+        avatar.innerHTML = '<i class="fa-solid fa-robot"></i>';
+
+        const content = document.createElement("div");
+        content.classList.add("message-content");
+
+        const name = document.createElement("span");
+        name.classList.add("message-name");
+        name.textContent = type === "error" ? "System" : "Mali AI";
+
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+
+        content.appendChild(name);
+        content.appendChild(paragraph);
+
+        message.appendChild(avatar);
+        message.appendChild(content);
+    }
+
+    chatMessages.appendChild(message);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    return message;
+}
+
+function setChatLoading(isLoading) {
+    chatInput.disabled = isLoading;
+    chatSend.disabled = isLoading;
+
+    chatSend.innerHTML = isLoading
+        ? '<i class="fa-solid fa-spinner fa-spin"></i><span>Thinking</span>'
+        : '<i class="fa-solid fa-paper-plane"></i><span>Send</span>';
+}
+
+async function sendChatMessage(message) {
+    const cleanMessage = message.trim();
+
+    if (!cleanMessage || chatSend.disabled) {
+        return;
+    }
+
+    addMessage(cleanMessage, "user");
+    chatInput.value = "";
+    chatInput.style.height = "auto";
+
+    setChatLoading(true);
+
+    const loadingMessage = addMessage("Thinking...", "assistant");
+
+    try {
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: cleanMessage
+            })
+        });
+
+        const data = await response.json();
+        loadingMessage.remove();
+
+        if (!response.ok) {
+            throw new Error(
+                data.error || "The request could not be completed."
+            );
+        }
+
+        addMessage(data.reply, "assistant");
+    } catch (error) {
+        loadingMessage.remove();
+
+        console.error("Chat request failed:", error);
+
+        addMessage(
+            "Sorry, Mali AI is temporarily unavailable. Please try again.",
+            "error"
+        );
+    } finally {
+        setChatLoading(false);
+        chatInput.focus();
+    }
+}
+
+chatForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    await sendChatMessage(chatInput.value);
+});
+
+promptButtons.forEach((button) => {
+    button.addEventListener("click", async () => {
+        const question = button.dataset.question;
+        await sendChatMessage(question);
+    });
+});
+
+clearChatButton.addEventListener("click", () => {
+    chatMessages.innerHTML = initialChatMessage;
+    chatInput.value = "";
+    chatInput.style.height = "auto";
+    chatInput.focus();
+});
+
+// Press Enter to send and Shift + Enter for a new line
+chatInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        chatForm.requestSubmit();
+    }
+});
+
+// Automatically resize the textarea
+chatInput.addEventListener("input", () => {
+    chatInput.style.height = "auto";
+
+    chatInput.style.height = `${Math.min(
+        chatInput.scrollHeight,
+        140
+    )}px`;
+});
 </script>
 
 </html>
+

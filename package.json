@@ -1,0 +1,25 @@
+{
+  "name": "jakrapatwpd",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danjkpw/jakrapatwpd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danjkpw/jakrapatwpd/issues"
+  },
+  "homepage": "https://github.com/danjkpw/jakrapatwpd#readme",
+  "dependencies": {
+    "@google/genai": "^2.13.0",
+    "groq-sdk": "^1.4.0"
+  }
+}
