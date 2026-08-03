@@ -2,8 +2,8 @@ export const portfolioKnowledge = `
 PROFILE
 Name: Jakrapat Wongpradu
 Preferred name: Dan
-Location: Bangkok, Thailand
-Education: Bachelor of Engineering in Digital Engineering at Sirindhorn International Institute of Technology, Thammasat University.
+Location: Bangkok Sathorn, Thailand
+Education: Bachelor of Engineering in Digital Engineering at Sirindhorn International Institute of Technology, Thammasat University. Assumtion College for high school education.
 
 CAREER INTERESTS
 Jakrapat is interested in cybersecurity, networking, cloud application development, software development, and AI-powered applications.
@@ -23,6 +23,32 @@ Sales Associate and Translator at THAIFEX:
 - Collected customer information and business requirements.
 
 PROJECTS
+Windows 7 Exploitation & Post-Exploitation Lab (Key Project):
+-Conducted network scanning and enumeration using Nmap to identify vulnerable hosts and services
+-Exploited CVE-2017-0144 vulnerability via Metasploit Framework with DoublePulsar backdoor
+-Established remote access using Meterpreter reverse TCP payload and performed post-exploitation
+-Carried out system enumeration and basic privilege escalation techniques
+-Documented attack workflow and identified mitigation strategies
+
+Web Application Penetration Testing (DVWA Lab) (Key Project):
+-Performed web application security testing using Burp Suite and DVWA
+-Identified and exploited SQL Injection vulnerabilities to access backend data
+-Intercepted and modified HTTP requests to analyze application behavior and security flaws
+
+Digital Forensics & Incident Investigation (Key Project):
+-Conducted memory analysis using Volatility to identify suspicious processes and artifacts
+-Performed disk forensics using Autopsy to recover and analyze system data
+-Investigated system activity to reconstruct potential security incidents
+Correlated evidence from multiple sources and documented findings in a structured report
+
+XSS and SQLi Challenges (Key Project):
+-This project involves completing web security challenges on sudo.co.li, focusing on exploiting common vulnerabilities such as SQL injection (SQLi) and cross-site scripting (XSS). The challenges required analyzing input fields, crafting payloads, and understanding how improper input handling can lead to security weaknesses. Through this project, practical experience was gained in identifying vulnerabilities, testing attack techniques, and understanding how web applications can be exploited in real-world scenarios.
+
+Lost and Found Cloud Based Application (Key Project):
+-An API based cloud application built on AWS for managing and tracking lost items. The application allows users to report lost items, search for found items, and manage their reports through a user-friendly interface.
+-The system utilizes a robust serverless architecture on AWS. This design separates the frontend (Amplify) from the backend logic (Lambda) and storage (DynamoDB/S3), ensuring high scalability and cost-efficiency.
+-Cloud Stack:Frontend: React.js (Hosted on AWS Amplify), Authentication: Amazon Cognito, API Layer: Amazon API Gateway, Business Logic: AWS Lambda (Node.js), Database: Amazon DynamoDB, Storage: Amazon S3 (For item images and ID verification)
+
 Secure Text:
 - An encrypted TCP chat application.
 - Uses RSA for key exchange and AES-256-CBC for message encryption.
@@ -58,13 +84,21 @@ Programming and development:
 Cybersecurity and networking:
 - Kali Linux
 - Wireshark
+- Autopsy
+- Volatility
+- Metasploit Framework
+- Burp Suite
 - Nmap
 - Splunk
-- Microsoft Sentinel
+- Microsoft Sentinel (Azure Sectinel)
 - Digital forensics
 - Network security
 - Incident triage
 - Malware and web-attack investigation
+- CWAF
+- Trellix (EDR/XDR)
+- Palo Alto
+- Arbour
 
 Cloud and tools:
 - Git
